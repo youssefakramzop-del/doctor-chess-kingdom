@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: #0f1117;
+    --bg-secondary: #1a1d2e;
+    --bg-tertiary: #252940;
+    --bg-card: #1e2235;
+    --border-color: #2a2f4a;
+    --text-primary: #e8eaed;
+    --text-secondary: #9aa0b4;
+    --text-muted: #6b7194;
+    --accent-green: #4caf50;
+    --accent-blue: #2196f3;
+    --accent-orange: #ff9800;
+    --accent-red: #f44336;
+    --accent-yellow: #ffc107;
+    --accent-teal: #009688;
+    --board-light: #ebecd0;
+    --board-dark: #779556;
+    --board-highlight: rgba(255, 255, 0, 0.4);
+  }
+
+  [data-theme="light"] {
+    --bg-primary: #f5f6fa;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #e8eaf0;
+    --bg-card: #ffffff;
+    --border-color: #d8dbe6;
+    --text-primary: #1a1d2e;
+    --text-secondary: #5c6280;
+    --text-muted: #8e94b0;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-2.5 rounded-lg font-semibold text-sm transition-all duration-200;
+    background: var(--accent-green);
+    color: white;
+  }
+  .btn-primary:hover {
+    filter: brightness(1.15);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+  }
+
+  .btn-secondary {
+    @apply px-6 py-2.5 rounded-lg font-semibold text-sm transition-all duration-200;
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+  }
+  .btn-secondary:hover {
+    background: var(--border-color);
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2.5 rounded-lg text-sm outline-none transition-all duration-200;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+  }
+  .input-field:focus {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.15);
+  }
+  .input-field::placeholder {
+    color: var(--text-muted);
+  }
+}
+
+.react-chessboard-square-highlight {
+  background: var(--board-highlight) !important;
+}
+
+.move-notation {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.pulse-dot {
+  animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
